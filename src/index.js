@@ -2,20 +2,47 @@ const handleClickHome= document.querySelector('#home')
 const handleClickUniverse = document.querySelector('#universe')
 const handleClickExploration = document.querySelector('#exploration')
 const elApp = document.getElementById('app')
-const myhtml = document.querySelector('html')
+const m = document.querySelector('#m')
+const navHome = document.querySelector('#home')
+const navUniverse = document.querySelector('#universe')
+const navExploration = document.querySelector('#exploration')
 
 handleClickHome.addEventListener('click', ()=>{
     elApp.classList.add('home')
+    m.style.backgroundImage = "url('/assets/mountains-universe-1.png')";
+    navHome.style.color = "white"
+    navHome.style.fontWeight = "bold";
+    navUniverse.style.color = "#E1E1E6"
+    navUniverse.style.fontWeight = "normal"
+    navExploration.style.color = "#E1E1E6"
+    navExploration.style.fontWeight = "normal"
+
+
 })
 
+
 handleClickUniverse.addEventListener('click', ()=>{
-    myhtml.classList.add('secondaryDefault')
-    myhtml.classList.remove('home')
+    elApp.classList.add('secondaryDefault')
+    elApp.classList.remove('home')
+    m.style.backgroundImage = "url('/assets/mountains-universe02.png')";
+    navHome.style.color = "#E1E1E6"
+    navHome.style.fontWeight = "normal"
+    navUniverse.style.color = "white"
+    navUniverse.style.fontWeight = "bold"
+    navExploration.style.color = "#E1E1E6"
+    navExploration.style.fontWeight = "normal"
 })
 
 handleClickExploration.addEventListener('click', ()=>{
-    myhtml.classList.add('secondaryDefault')
-    myhtml.classList.remove('home')
+    elApp.classList.add('secondaryDefault')
+    elApp.classList.remove('home')
+    m.style.backgroundImage = "url('/assets/mountains-universe-3.png')";
+    navHome.style.color = "#E1E1E6"
+    navHome.style.fontWeight = "normal"
+    navUniverse.style.color = "#E1E1E6"
+    navUniverse.style.fontWeight = "normal"
+    navExploration.style.color = "white"
+    navExploration.style.fontWeight = "bold"
 })
 const routes = {
     "/": "/pages/home.html",
