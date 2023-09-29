@@ -16,7 +16,7 @@ html{
     font-family: Roboto;
 }
 
-h1, h2{
+h1, h2, span{
     color: #E1E1E6;
     font-size: 4.8rem;
     font-style: normal;
@@ -39,6 +39,8 @@ button{
     border: 2px solid #FFF;
     background-color: transparent;
     cursor: pointer;
+
+    margin-top: 1rem;
 }
 
 button:hover{
@@ -72,7 +74,13 @@ nav a{
     line-height: 2.2rem;
 }
 
-main .home{
+nav a:hover{
+    color: white;
+    font-weight: bold;
+    font-size: 2.3rem;
+}
+
+.home, .erro{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -80,6 +88,7 @@ main .home{
     height: 80vh;
 }
 
-.secondaryDefault{
+.universe, .exploration{
     padding: 6rem;
 }
+
