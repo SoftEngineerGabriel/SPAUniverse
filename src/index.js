@@ -1,40 +1,19 @@
-const handleClickHome= document.querySelector('#home')
-const handleClickUniverse = document.querySelector('#universe')
-const handleClickExploration = document.querySelector('#exploration')
-const elApp = document.getElementById('app')
-const m = document.querySelector('#m')
-const navHome = document.querySelector('#home')
-const navUniverse = document.querySelector('#universe')
-const navExploration = document.querySelector('#exploration')
-const btn = document.querySelector('button')
+import el from './elements.js'
+import { homePage, universePage, explorationPage } from './events.js';
 
-
-
-
-handleClickHome.addEventListener('click', ()=>{
-    m.style.backgroundImage = "url('/assets/mountains-universe-1.png')";
-    navHome.style.color = "white"
-    navHome.style.fontWeight = "bold";
-    navUniverse.style.color = "#E1E1E6"
-    navUniverse.style.fontWeight = "normal"
-    navExploration.style.color = "#E1E1E6"
-    navExploration.style.fontWeight = "normal"
+el.handleClickHome.addEventListener('click', ()=>{
+    homePage()
 })
 
 
-handleClickUniverse.addEventListener('click',() =>{
+el.handleClickUniverse.addEventListener('click', () => {
     universePage()
 })
 
-handleClickExploration.addEventListener('click', ()=>{
-    m.style.backgroundImage = "url('/assets/mountains-universe-3.png')";
-    navHome.style.color = "#E1E1E6"
-    navHome.style.fontWeight = "normal"
-    navUniverse.style.color = "#E1E1E6"
-    navUniverse.style.fontWeight = "normal"
-    navExploration.style.color = "white"
-    navExploration.style.fontWeight = "bold"
+el.handleClickExploration.addEventListener('click', ()=>{
+    explorationPage()
 })
+
 const routes = {
     "/": "/pages/home.html",
     "/universe" : "/pages/universe.html",
@@ -58,25 +37,26 @@ function handle(){
     fetch(route).then(data => data.text()).then(html => {document.querySelector("#app").innerHTML = html}) //ela irá colocar as páginas html dentro da nossa aplicação (#app) com isso irá mudar ao ser clicado em qualquer link do nav.
 
 }
-function universePage(){
-    m.style.backgroundImage = "url('/assets/mountains-universe02.png')";
-    navHome.style.color = "#E1E1E6"
-    navHome.style.fontWeight = "normal"
-    navUniverse.style.color = "white"
-    navUniverse.style.fontWeight = "bold"
-    navExploration.style.color = "#E1E1E6"
-    navExploration.style.fontWeight = "normal"
+
+
+document.body.addEventListener('click', function(event) {
+    if (event.target && event.target.matches('button.btn-home-page')) {
+        btnHomePage();
+    }
+});
+
+function btnHomePage() {
+    fetch('/pages/universe.html')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('#app').innerHTML = html;
+            universePage()
+        });
 }
 
-function homePage(){
-    
-
-    fetch('/pages/universe.html').then(response => response.text()).then(html => {
-        document.querySelector('#app').innerHTML = html;
-    })
-    universePage()
-}
-
-handle() //essa função inicia executando pois ela chama o home para ser a tela inicial da aplicação
+ handle()//essa função inicia executando pois ela chama o home para ser a tela inicial da aplicação
 
 //nav home ao iniciar 
+
+window.onpopstate = () => handle()
+window.route = () => route()
